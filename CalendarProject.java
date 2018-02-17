@@ -15,16 +15,17 @@ static int numberOfDays;
 		month = scan.nextInt();
 		isItLeap = calcisItLeap(year);
 		numberOfDays = calcnumberOfDays(month);
-		System.out.println("Is it a leap year? " + isItLeap);
-		System.out.println("How many days? " + numberOfDays);
-		System.out.println("What month? " + monthName);
+		System.out.println();
+		System.out.println("This is this calendar for: ");
+		System.out.println();
+		System.out.println(monthName + " " + year);
 		calcDayOfWeek();
-
+		System.out.println();
 	}
 
 
 	static boolean calcisItLeap(int y){
-		if(y % 400 == 0){
+		if(y % 4 == 0){
 			return true;
 		}
 		else{
@@ -159,12 +160,16 @@ static int numberOfDays;
 
 			System.out.print(" " + d + " | ");
 
-			if ((weekStart + d) % 7 == 0 && d < numberOfDays-1) {
+			if ((weekStart + d) % 7 == 0 && d <= numberOfDays-1) {
 				System.out.println();
 				System.out.print("| ");
 			}
 		}
-
+			if (printCount % 7 != 0) {
+				for (int fc = printCount; fc % 7 != 0; fc++) {
+					System.out.print("    | ");
+				}
+			}
 		System.out.println(" ");
 	}
 
